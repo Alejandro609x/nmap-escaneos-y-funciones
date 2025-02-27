@@ -1,79 +1,168 @@
 ```markdown
 # Auditoría de Redes con Nmap y Funciones Personalizadas
 
-Este repositorio contiene scripts y funciones personalizadas para realizar auditorías de seguridad en redes utilizando `Nmap`. Los scripts están diseñados para facilitar la enumeración de puertos, detectar sistemas operativos, y evadir detección en entornos con firewall.
+Este repositorio contiene scripts y funciones personalizadas para realizar auditorías de seguridad en redes utilizando **Nmap**. Los scripts están diseñados para facilitar la enumeración de puertos, la detección de sistemas operativos y la evasión de detección en entornos con firewall.
 
-## Contenido del Repositorio
-- **Funciones Personalizadas**: Funciones para crear directorios organizados, extraer puertos abiertos de un archivo y más.
-- **Comandos de Nmap**: Configuraciones avanzadas de escaneo para realizar auditorías detalladas.
-- **Técnicas de Evasión de Firewall**: Métodos para eludir firewalls y sistemas IDS/IPS durante el escaneo.
-- **Scripts para Automatización**: Secuencias de comandos para automatizar el proceso de escaneo y análisis de puertos.
+## Contenido
+
+- **Funciones personalizadas**: Organiza tu trabajo y extrae puertos abiertos de manera eficiente.
+- **Comandos de Nmap**: Escaneos avanzados y evasión de firewalls.
+- **Automatización**: Scripts que agilizan el proceso de escaneo y análisis.
 
 ## Instalación
 
-1. Clona este repositorio:
-   ```bash
-   git clone https://github.com/tu_usuario/nombre_del_repositorio.git
-   ```
+### Clonar el repositorio
 
-2. Navega al directorio del proyecto:
-   ```bash
-   cd nombre_del_repositorio
-   ```
+```bash
+git clone https://github.com/tu_usuario/nombre_del_repositorio.git
+```
 
-3. Asegúrate de tener `nmap` y `xclip` instalados. Si no los tienes, puedes instalarlos con:
-   ```bash
-   sudo apt install nmap xclip
-   ```
+### Navegar al directorio
 
-4. Agrega las funciones personalizadas a tu archivo `.zshrc` o `.bashrc` para que estén disponibles en la terminal.
+```bash
+cd nombre_del_repositorio
+```
+
+### Instalar dependencias
+
+Asegúrate de tener **Nmap** y **xclip** instalados en tu sistema.
+
+```bash
+sudo apt install nmap xclip
+```
+
+### Agregar funciones personalizadas a tu archivo `.zshrc`
+
+Edita tu archivo de configuración de **Zsh** (o **Bash**) y agrega las funciones personalizadas:
+
+```bash
+nano ~/.zshrc
+```
+
+Copia y pega las funciones del archivo `functions.zsh` o directamente desde este repositorio.
+
+### Recargar el archivo de configuración
+
+```bash
+source ~/.zshrc
+```
 
 ## Uso
 
-### Función para crear directorios:
+### Crear directorios organizados
+
+Para crear los directorios `nmap`, `content` y `exploits`, ejecuta:
+
 ```bash
 mkt
 ```
-Este comando crea tres directorios: `nmap`, `content`, y `exploits` para organizar los archivos durante la auditoría.
 
-### Función para extraer puertos abiertos de un archivo `allPorts.txt`:
+### Extraer puertos abiertos de un archivo `allPorts.txt`
+
+Si tienes un archivo `allPorts.txt` con información de puertos abiertos, utiliza la siguiente función para extraer la IP y los puertos:
+
 ```bash
 extractPorts allPorts.txt
 ```
-Este script extrae los puertos abiertos y la dirección IP de un archivo de salida de Nmap y copia los puertos al portapapeles (si tienes `xclip` instalado).
 
-### Comandos de Nmap:
+Este comando también copiará los puertos al portapapeles (si tienes **xclip** instalado).
 
-- **Escaneo de puertos abiertos**:
-  ```bash
-  nmap --open <IP>
-  ```
+### Comandos de Nmap
 
-- **Escaneo exhaustivo de puertos**:
-  ```bash
-  nmap -p- <IP>
-  ```
+#### Escaneo de todos los puertos
 
-- **Evasión de firewall (usando fragmentación)**:
-  ```bash
-  nmap -f <IP>
-  ```
+```bash
+nmap -p- <IP>
+```
+
+#### Escaneo de un rango específico de puertos
+
+```bash
+nmap -p<puerto_inicio>-<puerto_final> <IP>
+```
+
+#### Escaneo de puertos abiertos
+
+```bash
+nmap --open <IP>
+```
+
+#### Escaneo SYN (sigiloso)
+
+```bash
+nmap -sS <IP>
+```
+
+#### Escaneo con scripts básicos de Nmap
+
+```bash
+nmap -p22 -sC <IP>
+```
+
+#### Escaneo con evasión de firewall (fragmentación)
+
+```bash
+nmap -f <IP>
+```
+
+#### Escaneo con evasión utilizando decoys
+
+```bash
+nmap -D RND:10 <IP>
+```
+
+#### Escaneo de versión y servicios
+
+```bash
+nmap -sV <IP>
+```
+
+#### Escaneo de host sin resolución DNS
+
+```bash
+nmap -n <IP>
+```
+
+#### Escaneo agresivo
+
+```bash
+nmap -A <IP>
+```
+
+## Técnicas de Evasión de Firewall
+
+Nmap permite realizar escaneos sigilosos y evadir la detección de firewalls. Aquí algunas técnicas adicionales:
+
+- **Modificar el tamaño de los paquetes**:
+
+```bash
+nmap --mtu 1280 <IP>
+```
+
+- **Cambiar el puerto de origen**:
+
+```bash
+nmap --source-port 53 <IP>
+```
+
+- **Reducir la tasa de paquetes**:
+
+```bash
+nmap --min-rate 500 <IP>
+```
 
 ## Contribuciones
 
-Si deseas contribuir, por favor abre un *pull request* con tus cambios. Asegúrate de que tus cambios estén bien documentados y no rompan la funcionalidad existente.
+Si deseas contribuir a este proyecto, por favor abre un **pull request** con tus cambios. Asegúrate de documentar adecuadamente tus modificaciones y que no interfieran con la funcionalidad existente.
 
 ## Licencia
 
 Este proyecto está bajo la licencia [MIT](LICENSE).
 ```
 
-### Explicación de cada sección:
-1. **Título**: Una descripción clara y breve de qué trata el repositorio.
-2. **Descripción del Proyecto**: Explica el propósito del proyecto y lo que contiene.
-3. **Instalación**: Instrucciones detalladas para que otros usuarios puedan instalar y ejecutar el proyecto.
-4. **Uso**: Muestra cómo utilizar las funciones y los comandos que has preparado.
-5. **Contribuciones**: Explica cómo otros pueden contribuir al proyecto, si es abierto para modificaciones.
-6. **Licencia**: Incluye información sobre la licencia que estás utilizando para el código. (Usualmente MIT para proyectos abiertos).
+### Explicación de las secciones:
 
-Este formato es flexible, puedes agregar o quitar secciones según sea necesario.
+1. **Instalación**: Detalles claros de cómo clonar el repositorio, instalar dependencias necesarias y configurar el archivo `.zshrc`.
+2. **Uso**: Comandos útiles con explicaciones breves para que el usuario sepa qué hace cada uno. Los ejemplos de Nmap y las funciones personalizadas están documentados con un enfoque práctico.
+3. **Técnicas de evasión de firewall**: Se explica cómo usar Nmap para evitar ser detectado por firewalls con ejemplos prácticos.
+4. **Contribuciones y Licencia**: Fomentando que los usuarios contribuyan al proyecto y proporcionando información sobre la licencia.
