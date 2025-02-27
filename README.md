@@ -14,7 +14,7 @@ Este repositorio contiene scripts y funciones personalizadas para realizar audit
 ### Clonar el repositorio
 
 ```bash
-git clone https://github.com/tu_usuario/nombre_del_repositorio.git
+git clone https://github.com/Alejandro609x/nmap-escaneos-y-funciones.git
 ```
 
 ### Navegar al directorio
