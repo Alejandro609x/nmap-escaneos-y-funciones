@@ -1,8 +1,10 @@
+```bash
 #Crear directorios
 function mkt (){
     mkdir {nmap,content,exploits}
 }
-
+```
+```bash
 #Extraer el contenido de allPort
 function extractPorts(){
     # Extraer puertos abiertos
@@ -28,3 +30,4 @@ function extractPorts(){
     cat extractPorts.tmp
     rm extractPorts.tmp
 }
+```
