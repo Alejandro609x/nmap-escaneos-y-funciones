@@ -151,15 +151,6 @@ nmap --source-port 53 <IP>
 nmap --min-rate 500 <IP>
 ```
 
-## Contribuciones
-
-Si deseas contribuir a este proyecto, por favor abre un **pull request** con tus cambios. Asegúrate de documentar adecuadamente tus modificaciones y que no interfieran con la funcionalidad existente.
-
-## Licencia
-
-Este proyecto está bajo la licencia [MIT](LICENSE).
-```
-
 ### Explicación de las secciones:
 
 1. **Instalación**: Detalles claros de cómo clonar el repositorio, instalar dependencias necesarias y configurar el archivo `.zshrc`.
