@@ -20,7 +20,7 @@ git clone https://github.com/Alejandro609x/nmap-escaneos-y-funciones.git
 ### Navegar al directorio
 
 ```bash
-cd nombre_del_repositorio
+cd nmap-escaneos-y-funciones
 ```
 
 ### Instalar dependencias
