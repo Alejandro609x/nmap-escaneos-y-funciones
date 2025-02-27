@@ -1,4 +1,4 @@
-```markdown
+
 # Auditoría de Redes con Nmap y Funciones Personalizadas
 
 Este repositorio contiene scripts y funciones personalizadas para realizar auditorías de seguridad en redes utilizando **Nmap**. Los scripts están diseñados para facilitar la enumeración de puertos, la detección de sistemas operativos y la evasión de detección en entornos con firewall.
